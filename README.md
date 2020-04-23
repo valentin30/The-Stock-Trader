@@ -1,19 +1,6 @@
-# the-stock-trader
+# The Stock Trader
 
-## Project setup
-```
-npm install
-```
+## Deployed at https://the-stock-trader-9894f.web.app
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+The project is inspired by Maximilian Schwarzmüller's Vue course on Udemy
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
