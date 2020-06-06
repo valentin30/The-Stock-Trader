@@ -1,7 +1,10 @@
 <template>
     <div id="app">
         <Nav :isOpen="isOpen" @change="isOpen = $event"></Nav>
-        <transition :enter-active-class="'animated slideIn'+ direction" :leave-active-class="'animated slideOut' + direction">
+        <transition
+            :enter-active-class="'animated slideIn' + direction"
+            :leave-active-class="'animated slideOut' + direction"
+        >
             <SideMenu @change="isOpen = $event" v-if="isOpen"></SideMenu>
         </transition>
         <transition mode="out-in" name="fade">
@@ -28,10 +31,10 @@ export default {
         this.$store.dispatch('initStocks')
         console.log('created')
     },
-    watch:{
-        isOpen(){
-            let num = Math.floor(Math.random() * 4 + 1) 
-            switch(num){
+    watch: {
+        isOpen() {
+            let num = Math.floor(Math.random() * 4 + 1)
+            switch (num) {
                 case 1:
                     this.direction = 'Left'
                     break
@@ -45,8 +48,8 @@ export default {
                     this.direction = 'Up'
                     break
             }
-        }
-    }
+        },
+    },
 }
 </script>
 
@@ -59,6 +62,8 @@ body {
     font-family: sans-serif;
     color: #333;
     padding: 1rem;
+    max-width: 1500px;
+    margin: 4rem auto;
 }
 ul {
     list-style: none;

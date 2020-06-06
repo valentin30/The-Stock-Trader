@@ -1,39 +1,41 @@
 <template>
-    <div class="nav-bar">
-        <ul class="navigation">
-            <router-link tag="li" class="home-route" to="/"
-                >Stock Trader</router-link
-            >
-            <div class="routes">
-                <router-link class="route" tag="li" to="/portfolio"
-                    >Portfolio</router-link
+    <div class="wraper-helper">
+        <div class="nav-bar">
+            <ul class="navigation">
+                <router-link tag="li" class="home-route" to="/"
+                    >Stock Trader</router-link
                 >
-                <router-link class="route" tag="li" to="/stocks"
-                    >Stocks</router-link
-                >
-            </div>
-        </ul>
-        <ul class="action-and-info">
-            <li>
-                <button @click="endDay">End Day</button>
-            </li>
-            <li @mouseenter="open" @mouseleave="close" class="dropdown">
-                <button>Save & Load</button>
-                <div v-if="showDropdown" class="dropdown-content">
-                    <button>Save</button>
-                    <button>Load</button>
+                <div class="routes">
+                    <router-link class="route" tag="li" to="/portfolio"
+                        >Portfolio</router-link
+                    >
+                    <router-link class="route" tag="li" to="/stocks"
+                        >Stocks</router-link
+                    >
                 </div>
-            </li>
-            <li>
-                <p>
-                    <b>Funds: ${{ funds }}</b>
-                </p>
-            </li> 
-        </ul>
-        <div class="burger" @click="openSideMenu" v-if="!isOpen">
-            <div></div>
-            <div></div>
-            <div></div>
+            </ul>
+            <ul class="action-and-info">
+                <li>
+                    <button @click="endDay">End Day</button>
+                </li>
+                <li @mouseenter="open" @mouseleave="close" class="dropdown">
+                    <button>Save & Load</button>
+                    <div v-if="showDropdown" class="dropdown-content">
+                        <button>Save</button>
+                        <button>Load</button>
+                    </div>
+                </li>
+                <li>
+                    <p>
+                        <b>Funds: ${{ funds }}</b>
+                    </p>
+                </li>
+            </ul>
+            <div class="burger" @click="openSideMenu" v-if="!isOpen">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </div>
 </template>
@@ -41,7 +43,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-    props:['isOpen'],
+    props: ['isOpen'],
     computed: {
         ...mapGetters(['funds']),
     },
@@ -58,14 +60,26 @@ export default {
         open() {
             this.showDropdown = true
         },
-        openSideMenu(){
+        openSideMenu() {
             this.$emit('change', true)
-        }
+        },
     },
 }
 </script>
 
 <style scoped>
+.wraper-helper {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    right: 1rem;
+    max-width: 1500px;
+    margin: auto;
+    padding-top: 1rem;
+    background-color: white;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
 .nav-bar {
     background-color: whitesmoke;
     border-radius: 10px;
@@ -82,12 +96,13 @@ export default {
     font-size: 1.8rem;
     padding: 1.1rem 1.5rem 1rem;
     font-weight: bold;
+    cursor: pointer;
 }
-.routes{
+.routes {
     display: flex;
     flex-direction: row;
 }
-.route{
+.route {
     padding: 1.5rem 1rem 1.2rem;
     font-size: 1.2rem;
     cursor: pointer;
@@ -132,7 +147,7 @@ p {
     margin: 0;
     padding: 1.55rem 1rem 1.35rem;
 }
-.burger{
+.burger {
     padding: 1.32rem;
     display: none;
     flex-direction: column;
@@ -141,23 +156,22 @@ p {
     font-size: 2rem;
     cursor: pointer;
 }
-.burger div{
+.burger div {
     background-color: rgb(93, 174, 255);
     width: 30px;
     height: 2px;
-    
 }
 @media (max-width: 850px) {
-    .routes{
+    .routes {
         display: none;
     }
-    .action-and-info{
+    .action-and-info {
         display: none;
     }
-    .home-route{
+    .home-route {
         font-size: 1.5rem;
     }
-    .burger{
+    .burger {
         display: flex;
     }
 }

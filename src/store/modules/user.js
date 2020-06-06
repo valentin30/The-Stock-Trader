@@ -35,7 +35,7 @@ const actions = {
         commit('setFunds', newFunds)
 
         const stockIndex = userStocks.findIndex(
-            s => s.stock.name === stock.name,
+            s => s.stock.name === stock.name
         )
         if (stockIndex === -1) {
             commit('pushStock', payload)

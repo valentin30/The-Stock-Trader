@@ -24,7 +24,7 @@ export default {
         ...mapGetters(['stocks', 'funds']),
         stock() {
             const stock = this.stocks.find(
-                p => p.name === this.$route.params.name,
+                p => p.name === this.$route.params.name
             )
             return stock
         },
@@ -32,7 +32,7 @@ export default {
     methods: {
         ...mapActions(['buyStocks']),
         buy() {
-            if (this.quantity === 0) {
+            if (this.quantity <= 0) {
                 return
             }
             if (this.funds - this.quantity * this.stock.price < 0) {
@@ -62,7 +62,7 @@ export default {
 .header {
     margin-bottom: 2rem;
 }
-.text{
+.text {
     display: flex;
     flex-direction: column;
     width: fit-content;
